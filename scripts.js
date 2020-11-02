@@ -1,15 +1,15 @@
 /* Add your JavaScript to this file */
-"use strict";
-getElementsByClassName("btn").onclick = function() {Email()};
+const email = document.getElementById('email')
+const form = document.getElementById('form')
 
-function Email(formData){
-	let newEmail = formData.email.value;
-	var messageElement = document.querySelector('.message');
-	if (newEmail){
-		messageElement.innerHtml = `Your email address <${newEmail}> has been added to our mailing list`;
-		return false;
-	}else{
-		messageElement.innerHtml = "Email must be filled out, please enter a valid email address";
-		return false;
+form.addEventListener('submit', (e) =>{
+	let messages = []
+	if (email.value == '' || email.value == null){
+		messages.push('Email is required')
 	}
-}
+
+	if (messages.length >0){
+		e.preventDefault()
+		errorElement.innerText = messages.join(',')
+	}
+})
